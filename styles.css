@@ -1,0 +1,44 @@
+/* 
+    Document   : styles
+    Created on : 04-Jul-2013, 22:15:54
+    Author     : Conn
+    Description:
+        Purpose of the stylesheet follows.
+*/
+div#quick_course
+{
+    width: 90%;
+    margin: auto;
+}
+
+div#quick_course input
+{
+    width: 100%;
+    text-align: left;
+}
+
+img#quick_course_loading
+{
+    width: 20px;
+}
+
+.quick_course_centre
+{
+    text-align: center;
+}
+
+.quick_course_bold
+{
+    font-weight: bold;
+}
+
+div#quick_course_results
+{
+    font-size: 8pt;
+}
+
+div.quick_course_expand
+{
+    margin-bottom: 5px;
+    text-align: center;
+}
