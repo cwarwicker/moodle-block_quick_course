@@ -26,6 +26,10 @@ require_once '../../config.php';
 require_login();
 
 $courseID = optional_param('id', SITEID, PARAM_INT);
+$context = context_course::instance($courseID);
+
+// Requires capabiity to configure the meta enrolments on the course, to see them
+require_capability('enrol/meta:config', $context);
 
 $PAGE->set_context( context_course::instance(SITEID) );
 $PAGE->set_url($CFG->wwwroot . '/blocks/quick_course/relationships.php?id='.$courseID);

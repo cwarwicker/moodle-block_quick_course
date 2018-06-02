@@ -48,25 +48,22 @@ function block_quick_course_get_course_info($course)
     $return .= "<div class='quick_course_expand' id='hidden_c{$course->id}' style='display: none;'>";
     
     $context = context_course::instance($course->id);
-    
-    // Has capability to view details of this course
-    if (has_capability('block/quick_course:viewdetails', $context)){
-        
-        // Edit course link (course settings)
-        if (has_capability('moodle/course:update', $context)){
-            $return .= "<a href='{$CFG->wwwroot}/course/edit.php?id={$course->id}' target='_blank' title='".get_string('edit', 'block_quick_course')."'><img src='".$OUTPUT->pix_url('t/edit')."' /></a> &nbsp; ";
-        }
-        
-        // Participants link
-        if (has_capability('moodle/course:viewparticipants', $context)){
-            $return .= "<a href='{$CFG->wwwroot}/user/index.php?id={$course->id}' target='_blank' title='".get_string('participants', 'block_quick_course')."'><img src='".$OUTPUT->pix_url('t/groupv')."' /></a> &nbsp; ";
-        }
-        
-        // Relationships link
-        $return .= "<a href='{$CFG->wwwroot}/blocks/quick_course/relationships.php?id={$course->id}' target='_blank' title='".get_string('relationships', 'block_quick_course')."'><img src='".$CFG->wwwroot."/blocks/quick_course/pix/relationship.png' /></a> &nbsp; ";
-        
+            
+    // Edit course link (course settings)
+    if (has_capability('moodle/course:update', $context)){
+        $return .= "<a href='{$CFG->wwwroot}/course/edit.php?id={$course->id}' target='_blank' title='".get_string('edit', 'block_quick_course')."'><img src='".$OUTPUT->image_url('t/edit')."' /></a> &nbsp; ";
     }
-        
+
+    // Participants link
+    if (has_capability('moodle/course:viewparticipants', $context)){
+        $return .= "<a href='{$CFG->wwwroot}/user/index.php?id={$course->id}' target='_blank' title='".get_string('participants', 'block_quick_course')."'><img src='".$OUTPUT->image_url('t/groupv')."' /></a> &nbsp; ";
+    }
+
+    // Relationships link - Needs permission to configure meta links on this course in order to see the relationships
+    if (has_capability('enrol/meta:config', $context)){
+        $return .= "<a href='{$CFG->wwwroot}/blocks/quick_course/relationships.php?id={$course->id}' target='_blank' title='".get_string('relationships', 'block_quick_course')."'><img src='".$CFG->wwwroot."/blocks/quick_course/pix/relationship.png' /></a> &nbsp; ";
+    }
+
     $return .= "</div><br>";
     
     return $return;

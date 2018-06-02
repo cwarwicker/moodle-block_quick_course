@@ -53,10 +53,9 @@ class block_quick_course extends block_base
         $this->content->text .= "<div id='quick_course'><form id='quick_course_form' method='post' action=''><input type='text' id='quick_course_search' /></form></div>";
         $this->content->text .= "<br><div id='quick_course_results'></div>";
                 
-        $this->page->requires->js_init_call('M.block_quick_course.handlers', array($COURSE->id));
+        $this->page->requires->js_call_amd('block_quick_course/module', 'init', array($COURSE->id));
         
         return $this->content;
-        
         
     }
     

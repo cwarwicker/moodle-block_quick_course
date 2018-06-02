@@ -38,17 +38,7 @@ $capabilities = array(
     ),
     
     'block/quick_course:search' => array(
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
-            'student' => CAP_PREVENT,
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'manager' => CAP_ALLOW
-        )
-    ),
-    
-     'block/quick_course:viewdetails' => array(
+        'riskbitmask' => RISK_PERSONAL,
         'captype' => 'read',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(
@@ -59,4 +49,4 @@ $capabilities = array(
         )
     )
     
-    );
+);

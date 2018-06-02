@@ -44,5 +44,5 @@ $string['relationshipsof'] = 'Relationships of';
 $string['parentcourses'] = 'Parent courses';
 $string['nocourses'] = 'No courses found';
 $string['childcourses'] = 'Child courses';
-$string['resultlimit'] = 'Reult Limit';
+$string['resultlimit'] = 'Result Limit';
 $string['resultlimit:desc'] = 'Maximum amount of results to show. (Set as "0" for no limit)';
