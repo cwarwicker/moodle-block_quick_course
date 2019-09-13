@@ -13,7 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
- 
+
 /**
  * block_quick_course core class
  *
@@ -26,42 +26,42 @@ defined('MOODLE_INTERNAL') || die();
 
 class block_quick_course extends block_base
 {
-    
+
     public function init()
     {
-        $this->title = get_string('pluginname', 'block_quick_course');        
+        $this->title = get_string('pluginname', 'block_quick_course');
     }
-    
+
     public function get_content()
     {
-        
+
         global $COURSE;
-        
+
         if ($this->content !== null) return $this->content;
-                
+
         $this->content = new stdClass();
         $this->content->text = '';
-        
+
         $context = context_course::instance($COURSE->id);
-        
+
         if (!has_capability('block/quick_course:search', $context)){
             return $this->content;
         }
-        
+
         // Search bar
         $this->content->text .= "<p class='quick_course_centre'><small><a href='#' id='quick_course_clear'>".get_string('clear', 'block_quick_course')."</a></small></p>";
         $this->content->text .= "<div id='quick_course'><form id='quick_course_form' method='post' action=''><input type='text' id='quick_course_search' /></form></div>";
         $this->content->text .= "<br><div id='quick_course_results'></div>";
-                
+
         $this->page->requires->js_call_amd('block_quick_course/module', 'init', array($COURSE->id));
-        
+
         return $this->content;
-        
+
     }
-    
+
     public function has_config() {
         return true;
     }
-    
-    
+
+
 }
