@@ -13,7 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
- 
+
 /**
  * Capabilities for block_quick_course
  *
@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
-    
+
     'block/quick_course:addinstance' => array(
         'captype' => 'read',
         'contextlevel' => CONTEXT_BLOCK,
@@ -36,7 +36,7 @@ $capabilities = array(
             'manager' => CAP_ALLOW
         )
     ),
-    
+
     'block/quick_course:search' => array(
         'riskbitmask' => RISK_PERSONAL,
         'captype' => 'read',
@@ -48,5 +48,5 @@ $capabilities = array(
             'manager' => CAP_ALLOW
         )
     )
-    
+
 );

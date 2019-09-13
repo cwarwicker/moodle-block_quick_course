@@ -13,7 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
- 
+
 /**
  * List of meta relationships for a course
  *
@@ -22,35 +22,35 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-require_once '../../config.php';
+require_once('../../config.php');
 require_login();
 
-$courseID = optional_param('id', SITEID, PARAM_INT);
-$context = context_course::instance($courseID);
+$courseid = optional_param('id', SITEID, PARAM_INT);
+$context = context_course::instance($courseid);
 
 // Requires capabiity to configure the meta enrolments on the course, to see them
 require_capability('enrol/meta:config', $context);
 
 $PAGE->set_context( context_course::instance(SITEID) );
-$PAGE->set_url($CFG->wwwroot . '/blocks/quick_course/relationships.php?id='.$courseID);
+$PAGE->set_url($CFG->wwwroot . '/blocks/quick_course/relationships.php?id='.$courseid);
 $PAGE->set_title(get_string('relationships', 'block_quick_course') );
 $PAGE->set_heading( get_string('relationships', 'block_quick_course') );
 $PAGE->set_cacheable(true);
 $PAGE->set_pagelayout( 'base' );
 
-$course = $DB->get_record("course", array("id" => $courseID));
+$course = $DB->get_record("course", array("id" => $courseid));
 
 $meta = $DB->get_records_sql("SELECT DISTINCT c.*
                               FROM {course} c
                               INNER JOIN {enrol} e ON e.courseid = c.id
                               WHERE e.enrol = 'meta'
-                              AND e.customint1 = ?", array($courseID));
+                              AND e.customint1 = ?", array($courseid));
 
 $child = $DB->get_records_sql("SELECT DISTINCT c.*
                               FROM {course} c
                               INNER JOIN {enrol} e ON e.customint1 = c.id
                               WHERE e.enrol = 'meta'
-                              AND e.courseid = ?", array($courseID));
+                              AND e.courseid = ?", array($courseid));
 
 
 
@@ -60,17 +60,13 @@ echo $OUTPUT->heading(get_string('relationshipsof', 'block_quick_course' ).' '.$
 // Parent courses
 echo $OUTPUT->heading(get_string('parentcourses', 'block_quick_course'), 4);
 
-if ($meta)
-{
-    
-    foreach($meta as $m)
-    {
+if ($meta) {
+
+    foreach ($meta as $m) {
         echo "<a href='{$CFG->wwwroot}/course/view.php?id={$m->id}'>". $m->fullname."</a><br>";
-    }       
-    
-}
-else
-{
+    }
+
+} else {
     echo get_string('nocourses', 'block_quick_course' );
 }
 
@@ -80,19 +76,14 @@ echo "<br><br><hr><br>";
 // Child Courses
 echo $OUTPUT->heading(get_string('childcourses', 'block_quick_course'), 4);
 
-if ($child)
-{
-    
-    foreach($child as $m)
-    {
+if ($child) {
+
+    foreach ($child as $m) {
         echo "<a href='{$CFG->wwwroot}/course/view.php?id={$m->id}'>". $m->fullname."</a><br>";
-    }       
-    
-}
-else 
-{
+    }
+
+} else {
     echo get_string('nocourses', 'block_quick_course' );
 }
-
 
 echo $OUTPUT->footer();
