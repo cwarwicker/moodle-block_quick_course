@@ -32,6 +32,11 @@ img#quick_course_loading
     font-weight: bold;
 }
 
+.quick_course_italic
+{
+    font-style: italic;
+}
+
 div#quick_course_results
 {
     font-size: 8pt;

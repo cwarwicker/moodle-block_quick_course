@@ -14,18 +14,81 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * block_quick_course core class
+ *
+ * @package    block_quick_course
+ * @copyright  2019 Conn Warwicker <conn@cmrwarwicker.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 defined('MOODLE_INTERNAL') || die();
 
+function block_quick_course_can_user_see_result($course) {
+
+    global $USER;
+
+    print_object($course);
+
+}
+
+function block_quick_course_search($search, $exact) {
+
+    global $DB;
+
+    $results = false;
+    $wildcard = "%{$search}%";
+
+    // Exact results
+    if ($exact) {
+
+        $results = $DB->get_records_select(
+            "course",
+            "fullname = ? OR shortname = ?",
+            array($search, $search),
+            "fullname ASC, shortname ASC", "id, shortname, fullname, visible"
+        );
+
+    } else {
+
+        // Similar results
+        $results = $DB->get_records_select(
+            "course",
+            "(".$DB->sql_like('fullname', '?', false, false)." OR ".$DB->sql_like('shortname', '?', false, false).")
+            AND
+            (fullname != ? AND shortname != ?)",
+            array($wildcard, $wildcard, $search, $search),
+            "fullname ASC, shortname ASC", "id, shortname, fullname, visible");
+
+    }
+
+    return $results;
+
+}
+
+
 /**
- * Script called by AJAX to return search results
- *
- * @copyright 04-Jul-2013
- * @version 1
- * @author Conn Warwicker <conn@cmrwarwicker.com>
- */
+* Function which displays the info for a result
+*/
 function block_quick_course_get_course_info($course) {
 
     global $CFG, $OUTPUT, $DB;
+
+
+    // Loop through results.
+
+    // Filter out any result the user should not be able to see.
+
+    // Apply css classes depending on meta/child, visible/hidden, etc...
+
+    // Build result bar.
+
+    // Check capabilities to see if the user can see the extra links in the results.
+
+    // Return results.
+
+
+
 
     $return = "";
 

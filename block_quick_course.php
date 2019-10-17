@@ -18,7 +18,7 @@
  * block_quick_course core class
  *
  * @package    block_quick_course
- * @copyright  2016 Conn Warwicker <conn@cmrwarwicker.com>
+ * @copyright  2019 Conn Warwicker <conn@cmrwarwicker.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -44,14 +44,38 @@ class block_quick_course extends block_base
 
         $context = context_course::instance($COURSE->id);
 
+        // If they don't have the search capability, then don't display the block.
         if (!has_capability('block/quick_course:search', $context)) {
             return $this->content;
         }
 
         // Search bar.
-        $this->content->text .= "<p class='quick_course_centre'><small><a href='#' id='quick_course_clear'>".get_string('clear', 'block_quick_course')."</a></small></p>";
-        $this->content->text .= "<div id='quick_course'><form id='quick_course_form' method='post' action=''><input type='text' id='quick_course_search' /></form></div>";
-        $this->content->text .= "<br><div id='quick_course_results'></div>";
+
+        // Clear results link.
+        $this->content->text .= html_writer::start_tag('p', array('class' => 'quick_course_centre'));
+
+            $this->content->text .= html_writer::tag(
+                'small',
+                html_writer::link('#', get_string('clear', 'block_quick_course'),
+                array('id' => 'quick_course_clear'))
+            );
+
+        $this->content->text .= html_writer::end_tag('p');
+
+        // Form input.
+        $this->content->text .= html_writer::start_tag('div', array('id' => 'quick_course'));
+
+            $this->content->text .= html_writer::tag(
+                'form',
+                html_writer::tag('input', null, array('id' => 'quick_course_search', 'type' => 'text')),
+                array('id' => 'quick_course_form', 'method' => 'post', 'action' => '')
+            );
+
+        $this->content->text .= html_writer::end_tag('div');
+
+        // Results.
+        $this->content->text .= html_writer::tag('br', null);
+        $this->content->text .= html_writer::tag('div', null, array('id' => 'quick_course_results'));
 
         $this->page->requires->js_call_amd('block_quick_course/module', 'init', array($COURSE->id));
 

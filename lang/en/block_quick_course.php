@@ -46,3 +46,7 @@ $string['nocourses'] = 'No courses found';
 $string['childcourses'] = 'Child courses';
 $string['resultlimit'] = 'Result Limit';
 $string['resultlimit:desc'] = 'Maximum amount of results to show. (Set as "0" for no limit)';
+$string['hiddencssclass'] = 'Hidden Course CSS Class';
+$string['hiddencssclass:desc'] = 'CSS class to apply to courses which are hidden';
+$string['childcssclass'] = 'Child Course CSS Class';
+$string['childcssclass:desc'] = 'CSS class to apply to courses which are children of a parent/meta course';

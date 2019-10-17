@@ -15,15 +15,24 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * block configuration
+ * settings.php
  *
  * @package    block_quick_course
- * @copyright  2016 Conn Warwicker <conn@cmrwarwicker.com>
+ * @copyright  2019 Conn Warwicker <conn@cmrwarwicker.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 
 defined('MOODLE_INTERNAL') || die();
 
 $settings->add(
-        new admin_setting_configtext('quick_course/limit', get_string('resultlimit', 'block_quick_course'), get_string('resultlimit:desc', 'block_quick_course'), 100)
+    new admin_setting_configtext('quick_course/limit', get_string('resultlimit', 'block_quick_course'), get_string('resultlimit:desc', 'block_quick_course'), 100)
 );
+
+$settings->add(
+    new admin_setting_configtext('quick_course/hidden_css_class', get_string('hiddencssclass', 'block_quick_course'), get_string('hiddencssclass:desc', 'block_quick_course'), 'dimmed')
+ );
+
+ $settings->add(
+     new admin_setting_configtext('quick_course/child_css_class', get_string('childcssclass', 'block_quick_course'), get_string('childcssclass:desc', 'block_quick_course'), 'quick_course_italic')
+ );
