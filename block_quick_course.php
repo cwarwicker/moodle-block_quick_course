@@ -50,7 +50,8 @@ class block_quick_course extends block_base {
         $context = context_course::instance($COURSE->id);
 
         // If they don't have the search capability, then don't display the block at all.
-        if (!has_capability('block/quick_course:search', $context)) {
+        if (!has_capability('block/quick_course:search', $context) &&
+            !has_capability('block/quick_course:search', $context)) {
             return $this->content;
         }
 

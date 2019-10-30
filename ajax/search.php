@@ -30,7 +30,8 @@ $searchterm = required_param('search', PARAM_TEXT);
 $courseid = required_param('course', PARAM_INT);
 
 $context = context_course::instance($courseid);
-if (!has_capability('block/quick_course:search', $context)) {
+if (!has_capability('block/quick_course:search', $context) &&
+    !has_capability('block/quick_course:searchall', $context)) {
     exit;
 }
 
