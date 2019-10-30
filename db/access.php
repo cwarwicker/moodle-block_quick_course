@@ -38,7 +38,7 @@ $capabilities = array(
         )
     ),
 
-    'block/quick_course:addmyinstance' => array(
+    'block/quick_course:myaddinstance' => array(
         'captype' => 'read',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(

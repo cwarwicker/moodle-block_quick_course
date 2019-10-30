@@ -28,6 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 $string['pluginname'] = 'Quick Course Search';
 
 $string['quickcourse'] = 'Quick Course';
+$string['invalidcourse'] = 'Invalid Course Record';
 $string['clear'] = 'Clear';
 $string['exactresults'] = 'Exact Results';
 $string['similarresults'] = 'Similar Results';
@@ -50,4 +51,3 @@ $string['hiddencssclass'] = 'Hidden Course CSS Class';
 $string['hiddencssclass:desc'] = 'CSS class to apply to courses which are hidden';
 $string['childcssclass'] = 'Child Course CSS Class';
 $string['childcssclass:desc'] = 'CSS class to apply to courses which are children of a parent/meta course';
-$string['invalidcourse'] = 'Invalid Course Record';

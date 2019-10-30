@@ -55,15 +55,17 @@ define(['jquery'], function($) {
 
             // Display the loading gif while the results are fetched.
             var img = '<img id="quick_course_loading" src="' + M.cfg.wwwroot + '/blocks/quick_course/pix/load.gif" />';
-            results.html('<div class="quick_course_centre">'+img+'</div>');
+            results.html('<div class="quick_course_centre">' + img + '</div>');
 
             // Ajax call to get the results.
             $.post(M.cfg.wwwroot + '/blocks/quick_course/ajax/search.php', {
                 course: courseID,
                 search: search
-            }, function(data){
+            }).done(function(data){
                 results.html(data);
                 module.bind(courseID);
+            }).fail(function(){
+                results.html('');
             });
 
             e.preventDefault();

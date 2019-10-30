@@ -18,6 +18,8 @@ img#quick_course_loading
 div#quick_course_results
 {
     font-size: 8pt;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 p.quick_course_results_heading
