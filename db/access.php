@@ -18,7 +18,8 @@
  * Capabilities for block_quick_course
  *
  * @package    block_quick_course
- * @copyright  2016 Conn Warwicker <conn@cmrwarwicker.com>
+ * @copyright  2019 Conn Warwicker <conn@cmrwarwicker.com>
+ * @link       https://github.com/cwarwicker/moodle-block_quick_course
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -37,8 +38,7 @@ $capabilities = array(
         )
     ),
 
-    'block/quick_course:search' => array(
-        'riskbitmask' => RISK_PERSONAL,
+    'block/quick_course:addmyinstance' => array(
         'captype' => 'read',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(
@@ -47,6 +47,25 @@ $capabilities = array(
             'editingteacher' => CAP_ALLOW,
             'manager' => CAP_ALLOW
         )
+    ),
+
+    'block/quick_course:search' => array(
+        'riskbitmask' => RISK_PERSONAL,
+        'captype' => 'read',
+        'contextlevel' => CONTEXT_BLOCK,
+        'archetypes' => array(
+            'student' => CAP_ALLOW,
+            'teacher' => CAP_ALLOW,
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW
+        )
+    ),
+
+    'block/quick_course:searchall' => array(
+        'riskbitmask' => RISK_PERSONAL,
+        'captype' => 'read',
+        'contextlevel' => CONTEXT_BLOCK,
+        'archetypes' => array()
     )
 
 );

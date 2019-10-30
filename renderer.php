@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Settings for block_quick_course
+ * Renderer class
  * @package    block_quick_course
  * @copyright  2019 Conn Warwicker <conn@cmrwarwicker.com>
  * @link       https://github.com/cwarwicker/moodle-block_quick_course
@@ -24,23 +24,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$settings->add(
-    new admin_setting_configtext('block_quick_course/limit',
-    get_string('resultlimit', 'block_quick_course'),
-    get_string('resultlimit:desc', 'block_quick_course'),
-    50)
-);
+class block_quick_course_renderer extends plugin_renderer_base {
 
-$settings->add(
-    new admin_setting_configtext('block_quick_course/hidden_css_class',
-    get_string('hiddencssclass', 'block_quick_course'),
-    get_string('hiddencssclass:desc', 'block_quick_course'),
-    'dimmed')
-);
-
-$settings->add(
-    new admin_setting_configtext('block_quick_course/child_css_class',
-    get_string('childcssclass', 'block_quick_course'),
-    get_string('childcssclass:desc', 'block_quick_course'),
-    'child-course')
-);
+}

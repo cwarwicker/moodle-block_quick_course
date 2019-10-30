@@ -18,68 +18,66 @@
  * List of meta relationships for a course
  *
  * @package    block_quick_course
- * @copyright  2016 Conn Warwicker <conn@cmrwarwicker.com>
+ * @copyright  2019 Conn Warwicker <conn@cmrwarwicker.com>
+ * @link       https://github.com/cwarwicker/moodle-block_quick_course
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 require_once('../../config.php');
 require_login();
 
-$courseid = optional_param('id', SITEID, PARAM_INT);
+$courseid = optional_param('id', false, PARAM_INT);
 $context = context_course::instance($courseid);
 
-// Requires capabiity to configure the meta enrolments on the course, to see them
+// Requires capabiity to configure the meta enrolments on the course, to see them.
 require_capability('enrol/meta:config', $context);
 
-$PAGE->set_context( context_course::instance(SITEID) );
-$PAGE->set_url($CFG->wwwroot . '/blocks/quick_course/relationships.php?id='.$courseid);
-$PAGE->set_title(get_string('relationships', 'block_quick_course') );
+$course = new block_quick_course\course($courseid);
+if (!$course->exists()) {
+    print_error('invalidcourse', 'block_quick_course');
+}
+
+$PAGE->set_context( $context );
+$PAGE->set_url( new moodle_url('/blocks/quick_course/relationships.php', array('id' => $courseid)) );
+$PAGE->set_title( get_string('relationships', 'block_quick_course') );
 $PAGE->set_heading( get_string('relationships', 'block_quick_course') );
 $PAGE->set_cacheable(true);
 $PAGE->set_pagelayout( 'base' );
 
-$course = $DB->get_record("course", array("id" => $courseid));
-
-$meta = $DB->get_records_sql("SELECT DISTINCT c.*
-                              FROM {course} c
-                              INNER JOIN {enrol} e ON e.courseid = c.id
-                              WHERE e.enrol = 'meta'
-                              AND e.customint1 = ?", array($courseid));
-
-$child = $DB->get_records_sql("SELECT DISTINCT c.*
-                              FROM {course} c
-                              INNER JOIN {enrol} e ON e.customint1 = c.id
-                              WHERE e.enrol = 'meta'
-                              AND e.courseid = ?", array($courseid));
-
-
+$parents = $course->get_parent_courses();
+$children = $course->get_child_courses();
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading(get_string('relationshipsof', 'block_quick_course' ).' '.$course->fullname);
+echo $OUTPUT->heading(get_string('relationshipsof', 'block_quick_course' ).' '.$course->get('fullname'));
 
-// Parent courses
-echo $OUTPUT->heading(get_string('parentcourses', 'block_quick_course'), 4);
+// Parent courses.
+echo $OUTPUT->heading( get_string('parentcourses', 'block_quick_course'), 4);
 
-if ($meta) {
+if ($parents) {
 
-    foreach ($meta as $m) {
-        echo "<a href='{$CFG->wwwroot}/course/view.php?id={$m->id}'>". $m->fullname."</a><br>";
+    foreach ($parents as $parent) {
+        echo html_writer::tag('a', $parent->get('fullname'), array(
+            'href' => new moodle_url('/course/view.php', array('id' => $parent->get('id')))
+        ));
     }
 
 } else {
     echo get_string('nocourses', 'block_quick_course' );
 }
 
+echo html_writer::empty_tag('br');
+echo html_writer::empty_tag('hr');
+echo html_writer::empty_tag('br');
 
-echo "<br><br><hr><br>";
-
-// Child Courses
+// Child Courses.
 echo $OUTPUT->heading(get_string('childcourses', 'block_quick_course'), 4);
 
-if ($child) {
+if ($children) {
 
-    foreach ($child as $m) {
-        echo "<a href='{$CFG->wwwroot}/course/view.php?id={$m->id}'>". $m->fullname."</a><br>";
+    foreach ($children as $child) {
+        echo html_writer::tag('a', $child->get('fullname'), array(
+            'href' => new moodle_url('/course/view.php', array('id' => $child->get('id')))
+        ));
     }
 
 } else {

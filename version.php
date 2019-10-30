@@ -15,17 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * version
- *
  * @package    block_quick_course
- * @copyright  2016 Conn Warwicker <conn@cmrwarwicker.com>
+ * @copyright  2019 Conn Warwicker <conn@cmrwarwicker.com>
+ * @link       https://github.com/cwarwicker/moodle-block_quick_course
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2018072503;
+$plugin->version = 2019102900;
 $plugin->requires = 2016052300;
 $plugin->component = 'block_quick_course';
 $plugin->maturity   = MATURITY_STABLE;
-$plugin->release    = '1.1';
+$plugin->release    = '2.0';

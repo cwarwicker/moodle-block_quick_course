@@ -1,0 +1,17 @@
+<div class='quick_course_result'>
+
+    <div>
+        <img src='{{config.wwwroot}}/blocks/quick_course/pix/plus.png' class='quick_course_toggle' data-courseid='{{course.id}}' />
+        <a href='{{config.wwwroot}}/course/view.php?id={{course.id}}' target='_blank' class='{{course.cssclass}}'>{{course.fullname}}</a>
+    </div>
+
+    <div class='quick_course_expand' id='hidden_course_{{course.id}}'>
+        <span>{{course.path}}</span><br>
+        {{#links}}
+            {{#.}}
+                <a href="{{url}}" target="_blank" title="{{title}}"><img src="{{img}}" alt="{{title}}" /></a>
+            {{/.}}
+        {{/links}}
+    </div>
+
+</div>
