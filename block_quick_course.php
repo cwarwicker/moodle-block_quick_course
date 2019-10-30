@@ -51,7 +51,7 @@ class block_quick_course extends block_base {
 
         // If they don't have the search capability, then don't display the block at all.
         if (!has_capability('block/quick_course:search', $context) &&
-            !has_capability('block/quick_course:search', $context)) {
+            !has_capability('block/quick_course:searchall', $context)) {
             return $this->content;
         }
 
