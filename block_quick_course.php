@@ -15,25 +15,30 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * block_quick_course core class
- *
  * @package    block_quick_course
  * @copyright  2019 Conn Warwicker <conn@cmrwarwicker.com>
+ * @link       https://github.com/cwarwicker/moodle-block_quick_course
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-class block_quick_course extends block_base
-{
+class block_quick_course extends block_base {
 
+    /**
+     * Initialise the block
+     */
     public function init() {
         $this->title = get_string('pluginname', 'block_quick_course');
     }
 
+    /**
+     * Get the content to be displayed in the block
+     * @return stdClass
+     */
     public function get_content() {
 
-        global $COURSE;
+        global $COURSE, $USER;
 
         if ($this->content !== null) {
             return $this->content;
@@ -44,7 +49,7 @@ class block_quick_course extends block_base
 
         $context = context_course::instance($COURSE->id);
 
-        // If they don't have the search capability, then don't display the block.
+        // If they don't have the search capability, then don't display the block at all.
         if (!has_capability('block/quick_course:search', $context)) {
             return $this->content;
         }
@@ -52,7 +57,7 @@ class block_quick_course extends block_base
         // Search bar.
 
         // Clear results link.
-        $this->content->text .= html_writer::start_tag('p', array('class' => 'quick_course_centre'));
+        $this->content->text .= html_writer::start_tag('p', array('class' => 'quick_course_clear'));
 
             $this->content->text .= html_writer::tag(
                 'small',
@@ -83,9 +88,12 @@ class block_quick_course extends block_base
 
     }
 
+    /**
+     * Block has configuration settings which can be changed
+     * @return true
+     */
     public function has_config() {
         return true;
     }
-
 
 }

@@ -18,16 +18,16 @@
  * Lang strings for block_quick_course
  *
  * @package    block_quick_course
- * @copyright  2016 Conn Warwicker <conn@cmrwarwicker.com>
+ * @copyright  2019 Conn Warwicker <conn@cmrwarwicker.com>
+ * @link       https://github.com/cwarwicker/moodle-block_quick_course
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$string = array();
+$string['pluginname'] = 'Quick Course Search';
 
 $string['quickcourse'] = 'Quick Course';
-$string['pluginname'] = 'Quick Course Search';
 $string['clear'] = 'Clear';
 $string['exactresults'] = 'Exact Results';
 $string['similarresults'] = 'Similar Results';
@@ -50,3 +50,4 @@ $string['hiddencssclass'] = 'Hidden Course CSS Class';
 $string['hiddencssclass:desc'] = 'CSS class to apply to courses which are hidden';
 $string['childcssclass'] = 'Child Course CSS Class';
 $string['childcssclass:desc'] = 'CSS class to apply to courses which are children of a parent/meta course';
+$string['invalidcourse'] = 'Invalid Course Record';
