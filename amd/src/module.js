@@ -54,7 +54,8 @@ define(['jquery'], function($) {
             }
 
             // Display the loading gif while the results are fetched.
-            results.html('<div class="quick_course_centre"><img id="quick_course_loading" src="' + M.cfg.wwwroot + '/blocks/quick_course/pix/load.gif" /></div>');
+            var img = '<img id="quick_course_loading" src="' + M.cfg.wwwroot + '/blocks/quick_course/pix/load.gif" />';
+            results.html('<div class="quick_course_centre">'+img+'</div>');
 
             // Ajax call to get the results.
             $.post(M.cfg.wwwroot + '/blocks/quick_course/ajax/search.php', {
