@@ -23,7 +23,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2019102902;
+$plugin->version = 2019103100;
 $plugin->requires = 2016052300;
 $plugin->component = 'block_quick_course';
 $plugin->maturity   = MATURITY_STABLE;
