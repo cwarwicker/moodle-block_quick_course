@@ -20,6 +20,7 @@ div#quick_course_results
     font-size: 8pt;
     max-height: 400px;
     overflow-y: auto;
+    margin-top: 10px;
 }
 
 p.quick_course_results_heading
@@ -59,4 +60,9 @@ p.quick_course_clear
 div.quick_course_result a.child-course
 {
     font-style: italic;
+}
+
+div.quick_course_loading
+{
+    text-align: center;
 }

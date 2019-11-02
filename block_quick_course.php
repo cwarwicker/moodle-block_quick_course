@@ -80,7 +80,6 @@ class block_quick_course extends block_base {
         $this->content->text .= html_writer::end_tag('div');
 
         // Results.
-        $this->content->text .= html_writer::tag('br', null);
         $this->content->text .= html_writer::tag('div', null, array('id' => 'quick_course_results'));
 
         $this->page->requires->js_call_amd('block_quick_course/module', 'init', array($COURSE->id));

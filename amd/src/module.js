@@ -31,8 +31,14 @@ define(['jquery'], function($) {
 
             $(this).off('click');
             $(this).on('click', function(){
+
                 var id = $(this).data('courseid');
                 $('#hidden_course_' + id).toggle();
+
+                var pix = M.cfg.wwwroot + '/blocks/quick_course/pix/' +
+                    ( ( $(this).attr('src').indexOf('plus.png') > -1 ) ? 'minus.png' : 'plus.png' );
+                $(this).attr('src', pix);
+
             });
 
         });
@@ -55,7 +61,7 @@ define(['jquery'], function($) {
 
             // Display the loading gif while the results are fetched.
             var img = '<img id="quick_course_loading" src="' + M.cfg.wwwroot + '/blocks/quick_course/pix/load.gif" />';
-            results.html('<div class="quick_course_centre">' + img + '</div>');
+            results.html('<div class="quick_course_loading">' + img + '</div>');
 
             // Ajax call to get the results.
             $.post(M.cfg.wwwroot + '/blocks/quick_course/ajax/search.php', {
