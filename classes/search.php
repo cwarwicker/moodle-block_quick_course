@@ -79,6 +79,8 @@ class search
 
             ) courses  ";
 
+        // TODO: QC-3: Search sub-categories of category enrolments.
+
         // First search for exact results.
         $sql['where'] = "WHERE (courses.fullname = ? OR courses.shortname = ?) AND courses.id <> ? ";
         $sql['order'] = "ORDER BY courses.fullname, courses.shortname  ";
