@@ -24,23 +24,27 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$settings->add(
-    new admin_setting_configtext('block_quick_course/limit',
-    get_string('resultlimit', 'block_quick_course'),
-    get_string('resultlimit:desc', 'block_quick_course'),
-    50)
-);
+if ($ADMIN->fulltree) {
 
-$settings->add(
-    new admin_setting_configtext('block_quick_course/hidden_css_class',
-    get_string('hiddencssclass', 'block_quick_course'),
-    get_string('hiddencssclass:desc', 'block_quick_course'),
-    'dimmed')
-);
+    $settings->add(
+        new admin_setting_configtext('block_quick_course/limit',
+            get_string('resultlimit', 'block_quick_course'),
+            get_string('resultlimit:desc', 'block_quick_course'),
+            50)
+    );
 
-$settings->add(
-    new admin_setting_configtext('block_quick_course/child_css_class',
-    get_string('childcssclass', 'block_quick_course'),
-    get_string('childcssclass:desc', 'block_quick_course'),
-    'child-course')
-);
+    $settings->add(
+        new admin_setting_configtext('block_quick_course/hidden_css_class',
+            get_string('hiddencssclass', 'block_quick_course'),
+            get_string('hiddencssclass:desc', 'block_quick_course'),
+            'dimmed')
+    );
+
+    $settings->add(
+        new admin_setting_configtext('block_quick_course/child_css_class',
+            get_string('childcssclass', 'block_quick_course'),
+            get_string('childcssclass:desc', 'block_quick_course'),
+            'child-course')
+    );
+
+}
