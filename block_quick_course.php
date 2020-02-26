@@ -44,7 +44,7 @@ class block_quick_course extends block_base {
      */
     public function get_content() {
 
-        global $COURSE, $USER;
+        global $COURSE;
 
         if ($this->content !== null) {
             return $this->content;

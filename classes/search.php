@@ -144,18 +144,8 @@ class search {
                             ".$DB->sql_like('courses.shortname', '?', false, false)."
                             )
                         AND courses.id <> ?";
-        $sqlparams = array(
-            $USER->id,
-            CONTEXT_COURSECAT,
-            $USER->id,
-            ENROL_USER_ACTIVE,
-            ENROL_INSTANCE_ENABLED,
-            $search,
-            $search,
-            "%{$search}%",
-            "%{$search}%",
-            SITEID
-        );
+        $sqlparams = array($USER->id, CONTEXT_COURSECAT, $USER->id, ENROL_USER_ACTIVE, ENROL_INSTANCE_ENABLED,
+            $search, $search, "%{$search}%", "%{$search}%", SITEID);
 
         // If we have the capability to searchall courses, remove the from section with all the JOINS and
         // literally just search in mdl_course.

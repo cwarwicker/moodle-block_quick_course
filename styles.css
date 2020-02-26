@@ -1,68 +1,56 @@
-div#quick_course
-{
+div#quick_course {
     width: 90%;
     margin: auto;
 }
 
-div#quick_course input
-{
+div#quick_course input {
     width: 100%;
     text-align: left;
 }
 
-img#quick_course_loading
-{
+img#quick_course_loading {
     width: 20px;
 }
 
-div#quick_course_results
-{
+div#quick_course_results {
     font-size: 8pt;
     max-height: 400px;
     overflow-y: auto;
     margin-top: 10px;
 }
 
-p.quick_course_results_heading
-{
+p.quick_course_results_heading {
     text-align: center;
     font-weight: bold;
 }
 
-div.quick_course_result
-{
+div.quick_course_result {
     margin-bottom: 5px;
 }
 
-div.quick_course_expand
-{
+div.quick_course_expand {
     display: none;
     margin-bottom: 5px;
     text-align: center;
 }
 
-div.quick_course_expand a
-{
+div.quick_course_expand a {
     margin: 0 10px;
 }
 
-img.quick_course_toggle
-{
+img.quick_course_toggle {
     width:16px;
     vertical-align:bottom;
 }
 
-p.quick_course_clear
-{
+p.quick_course_clear {
     text-align: center;
 }
 
-div.quick_course_result a.child-course
-{
+div.quick_course_result a.child-course {
     font-style: italic;
 }
 
-div.quick_course_loading
-{
+div.quick_course_loading {
     text-align: center;
 }
