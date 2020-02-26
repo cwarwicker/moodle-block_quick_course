@@ -13,7 +13,7 @@ img#quick_course_loading {
 }
 
 div#quick_course_results {
-    font-size: 8pt;
+    font-size: 11px;
     max-height: 400px;
     overflow-y: auto;
     margin-top: 10px;
@@ -39,8 +39,8 @@ div.quick_course_expand a {
 }
 
 img.quick_course_toggle {
-    width:16px;
-    vertical-align:bottom;
+    width: 16px;
+    vertical-align: bottom;
 }
 
 p.quick_course_clear {
