@@ -51,3 +51,4 @@ $string['hiddencssclass'] = 'Hidden course CSS class';
 $string['hiddencssclass:desc'] = 'CSS class to apply to courses which are hidden';
 $string['childcssclass'] = 'Child course CSS class';
 $string['childcssclass:desc'] = 'CSS class to apply to courses which are children of a parent/meta course';
+$string['privacy:metadata'] = 'The Quick Course block only displays existing data.';
