@@ -26,22 +26,53 @@ namespace block_quick_course;
 
 defined('MOODLE_INTERNAL') || die();
 
-class search
-{
+/**
+ * Core Search class
+ * @package    block_quick_course
+ * @copyright  2019 Conn Warwicker <conn@cmrwarwicker.com>
+ * @link       https://github.com/cwarwicker/moodle-block_quick_course
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class search {
 
-    private $course, $context, $results = [];
+    /**
+     * Course object
+     * @var stdClass
+     */
+    protected $course;
 
+    /**
+     * Context object
+     * @var context
+     */
+    protected $context;
+
+    /**
+     * Set the course object into the search class
+     * @param \stdClass $course
+     */
     public function set_course(\stdClass $course) {
         $this->course = $course;
     }
 
+    /**
+     * Set the context instance into the search class
+     * @param \context $context
+     */
     public function set_context(\context $context) {
         $this->context = $context;
     }
 
+    /**
+     * Get the search results
+     * @param string $search The text to search for
+     * @return array
+     * @throws \coding_exception
+     * @throws \dml_exception
+     */
     public function results($search) {
 
-        global $CFG, $DB, $USER;
+        global $DB, $USER;
 
         $results = array(
             'exact' => array(),
@@ -79,7 +110,7 @@ class search
 
             ) courses  ";
 
-        // TODO: QC-3: Search sub-categories of category enrolments.
+        // TODO: 3 - Search sub-categories of category enrolments.
 
         // First search for exact results.
         $sql['where'] = "WHERE (courses.fullname = ? OR courses.shortname = ?) AND courses.id <> ? ";

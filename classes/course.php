@@ -26,10 +26,50 @@ namespace block_quick_course;
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Core Course class
+ * @package    block_quick_course
+ * @copyright  2019 Conn Warwicker <conn@cmrwarwicker.com>
+ * @link       https://github.com/cwarwicker/moodle-block_quick_course
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class course {
 
-    protected $id, $fullname, $shortname, $visible, $category;
+    /**
+     * Course ID
+     * @var int
+     */
+    protected $id;
 
+    /**
+     * Course fullname
+     * @var string
+     */
+    protected $fullname;
+
+    /**
+     * Course shortname
+     * @var string
+     */
+    protected $shortname;
+
+    /**
+     * Course visible flag
+     * @var int
+     */
+    protected $visible;
+
+    /**
+     * Course category ID
+     * @var int
+     */
+    protected $category;
+
+    /**
+     * course constructor.
+     * @param $id
+     * @throws \dml_exception
+     */
     public function __construct($id) {
 
         global $DB;
@@ -133,8 +173,6 @@ class course {
 
     /**
      * Get the full category path of a course
-     * @param  int $catid
-     * @param  array  $names
      * @return string
      */
     public function get_category_path() {

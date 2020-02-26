@@ -24,6 +24,13 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Renderer class
+ * @package    block_quick_course
+ * @copyright  2019 Conn Warwicker <conn@cmrwarwicker.com>
+ * @link       https://github.com/cwarwicker/moodle-block_quick_course
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class block_quick_course_renderer extends plugin_renderer_base {
 
 }
