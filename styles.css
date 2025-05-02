@@ -54,3 +54,7 @@ div.quick_course_result a.child-course {
 div.quick_course_loading {
     text-align: center;
 }
+
+div#quick_course_results a img {
+    width: 12px;
+}
